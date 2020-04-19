@@ -16,7 +16,7 @@ class Dashboard extends Component {
   componentDidMount() {
     api.get(`/advertisement?taxId=06.990.590/0001-23`)
       .then(res => {
-        const posts = res.data.sucesso.map(obj => ({companyName: obj.companyName,phoneNumber: obj.phoneNumber,title: obj.title}));
+        const posts = res.data.sucesso.map(obj => ({description: obj.description,phoneNumber: obj.phoneNumber,title: obj.title,whatsAppApi:obj.whatsAppApi}));
         this.setState({ posts });
         console.log(this.state)
       });
@@ -45,8 +45,8 @@ class Dashboard extends Component {
                         <span>{post.phoneNumber}</span>
                       </div>
                     </header>
-                    <p>{post.companyName}</p>
-                    <a href={`https://github.com/vsgobbi/pyAdvertiser`}>Veja mais sobre a empresa</a>
+                    <p>{post.description}</p>
+                    <a href={post.whatsAppApi}>Fale Conoscoo pelo Whatsapp</a>
                 </li>
               )}
           </ul>

@@ -26,7 +26,7 @@ class Register extends Component {
       try {
         console.log({ taxId, fullName,phoneNumber,password,email });
         await api.post("/register", { taxId, fullName,phoneNumber,password,email });
-        this.props.history.push("/");
+        this.props.history.push("/anunciante");
       } catch (err) {
         console.log(err);
         this.setState({ error: "Ocorreu um erro ao registrar Usuario." });
@@ -44,7 +44,7 @@ class Register extends Component {
           <div class="linha-vertical"></div>
           <NavLink to="/Anunciante">Anunciante</NavLink>
           <div class="linha-vertical"></div>
-          <NavLink to="/Anunciante">Anunciante</NavLink>
+          <NavLink to="/propaganda">Propaganda</NavLink>
           <div class="linha-vertical"></div>
           <button type="button" onClick={logout}>Logout</button>
         </div>

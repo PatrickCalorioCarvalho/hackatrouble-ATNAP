@@ -42,6 +42,7 @@ main ul {
     grid-template-columns: 1fr;
   }
 }
+
 #search {
   max-width: 1000px;
   margin: 0 auto;

@@ -8,7 +8,7 @@ import api from '../../services/api';
 
 import { logout } from "../../services/auth";
 
-class Advertiser extends Component {
+class Advertisement extends Component {
   state = {
     taxId: "",
     email: "",
@@ -26,8 +26,8 @@ class Advertiser extends Component {
     } else {
       try {
         console.log({ taxId, fullName,phoneNumber,companyName,email });
-        await api.post("/advertiser", { taxId, fullName,phoneNumber,companyName,email });
-        this.props.history.push("/Anunciante");
+        await api.post("/Advertisement", { taxId, fullName,phoneNumber,companyName,email });
+        this.props.history.push("/usuario");
       } catch (err) {
         console.log(err);
         this.setState({ error: "Ocorreu um erro ao registrar Anunciante." });
@@ -44,7 +44,7 @@ class Advertiser extends Component {
             <div class="linha-vertical"></div>
             <NavLink activeStyle={{ color: 'black' }} to="/Anunciante">Anunciante</NavLink>
             <div class="linha-vertical"></div>
-            <NavLink to="/Anunciante">Anunciante</NavLink>
+            <NavLink to="/propaganda">Propaganda</NavLink>
             <div class="linha-vertical"></div>
             <button type="button" onClick={logout}>Logout</button>
           </div>
@@ -84,4 +84,4 @@ class Advertiser extends Component {
   }
 }
 
-export default Advertiser;
+export default Advertisement;
