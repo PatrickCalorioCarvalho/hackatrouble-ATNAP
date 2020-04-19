@@ -14,6 +14,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   #menu {
     margin: 0 auto;
     padding: 20px 30px;

@@ -14,31 +14,6 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  #menu {
-    margin: 0 auto;
-    padding: 20px 30px;
-    width: 100%;
-    display: flex;
-  }
-
-  .linha-vertical {
-    height: 25px;/*Altura da linha*/
-    border-left: 1px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
-    margin: 0 15px;
-  }
-
-  #menu button {
-    
-    width: 30%;
-    height: 20px;
-    font-size: 14px;
-    background: #EA4335;
-    color:#fff;
-    border: 0;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 50px;
-  }
-
   p {
     color: #ff3333;
     margin-bottom: 15px;

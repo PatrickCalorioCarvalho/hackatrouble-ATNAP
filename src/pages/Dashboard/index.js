@@ -1,20 +1,26 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 
 import {Container } from "./styles";
 
-class Dashboard extends Component {
-  state = {
-    taxId: "",
-    fullName: "",
-    companyName: "",
-    phoneNumber: "",
-    error: ""
-  };
+import api from '../../services/api';
 
-  handleSignUp = e => {
-    e.preventDefault();
-    alert("Eu vou te registrar");
-  };
+class Dashboard extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: []
+    }
+  }
+  
+  componentDidMount() {
+    api.get(`/advertisement?taxId=06.990.590/0001-23`)
+      .then(res => {
+        const posts = res.data.sucesso.map(obj => ({companyName: obj.companyName,phoneNumber: obj.phoneNumber,title: obj.title}));
+        this.setState({ posts });
+        console.log(this.state)
+      });
+  }
 
   render() {
     return (
@@ -30,50 +36,19 @@ class Dashboard extends Component {
       <div id="app">
         <main>
           <ul>
-              <li className="dash-item">
-                <header>
-                  <img src="http://www.omsistemas.com/wp-content/uploads/2016/10/logotipo-om-negativo.png" alt="Teste" />
-                    <div className="user-info">
-                      <strong>OMSistemas</strong>  
-                      <span>Tecnologia da Informação</span>
-                    </div>
-                  </header>
-                  <p>SOMOS UMA EMPRESA DE ADAMANTINA/SP E CULTIVAMOS UM GRANDE COMPROMISSO COM A GESTÃO INTELIGENTE DAS EMPRESAS</p>
-                  <a href={`http://www.omsistemas.com/`}>Veja mais sobre a empresa</a>
-              </li>
-              <li className="dash-item">
-                <header>
-                  <img src="https://goodu.com.br/static/img/header-logo.png" alt="Teste" />
-                    <div className="user-info">
-                      <strong>Goodu</strong>  
-                      <span>Provedor de Internet</span>
-                    </div>
-                  </header>
-                  <p>As pessoas mais próximas das novidades do mundo. As empresas mais ágeis e estáveis conectadas às novas oportunidades de negócios</p>
-                  <a href={`https://goodu.com.br/`}>Veja mais sobre a empresa</a>
-              </li>
-              <li className="dash-item">
-                <header>
-                  <img src="http://www.risso.com.br/assets/images/rodapelogo-309x110.png" alt="Teste" />
-                    <div className="user-info">
-                      <strong>Risso</strong>  
-                      <span>Tramportadora</span>
-                    </div>
-                  </header>
-                  <p>Transportadora Risso mantém junto a todos os funcionários e prestadores de serviços uma política de compromisso com seu crescimento e aperfeiçoamento constantes</p>
-                  <a href={`http://www.risso.com.br/`}>Veja mais sobre a empresa</a>
-              </li>
-              <li className="dash-item">
-                <header>
-                  <img src="https://www.luminarlimpeza.com.br/content/library/images/Logo-Luminar.png" alt="Teste" />
-                    <div className="user-info">
-                      <strong>Luminar</strong>  
-                      <span>Produtos de Limpeza</span>
-                    </div>
-                  </header>
-                  <p>Fundada em 1994, a Luminar é uma indústria química de gestão familiar, cuja paixão é desenvolver, fabricar e fornecer produtos de limpeza de altíssimo desempenho</p>
-                  <a href={`https://www.luminarlimpeza.com.br/`}>Veja mais sobre a empresa</a>
-              </li>
+              { this.state.posts.map(post =>
+                  <li className="dash-item">
+                  <header>
+                    <img src="https://cdn.icon-icons.com/icons2/1506/PNG/512/emblemok_103757.png" alt="Teste" />
+                      <div className="user-info">
+                        <strong>{post.title}</strong>  
+                        <span>{post.phoneNumber}</span>
+                      </div>
+                    </header>
+                    <p>{post.companyName}</p>
+                    <a href={`https://github.com/vsgobbi/pyAdvertiser`}>Veja mais sobre a empresa</a>
+                </li>
+              )}
           </ul>
         </main>
     </div>
