@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Form, Container } from "./styles";
+import { NavLink } from "react-router-dom";
 
 import api from '../../services/api';
 import { login } from "../../services/auth";
@@ -35,9 +36,18 @@ class Login extends Component {
 
   render() {
     return (
-      
+      <div>
+      <nav className="navBar">
+        <ul>
+            <li><NavLink to="/">Dashboard</NavLink></li>
+            <li><NavLink to="/usuario">Usuários</NavLink></li>
+            <li><NavLink to="/anunciante/">Anunciante</NavLink></li>
+            <li><NavLink to="/anuncios/">Anuncios</NavLink></li>
+            <li><NavLink to="/login/">Login</NavLink></li>
+            <li><NavLink to="/logout/">Logout</NavLink></li>
+        </ul>
+    </nav>
       <Container>
-
         <Form onSubmit={this.handleAdd}>
           {this.state.error && <p>{this.state.error}</p>}
 
@@ -54,6 +64,7 @@ class Login extends Component {
           <button type="submit">Salvar</button>
         </Form>
       </Container>
+      </div>
     );
   }
 }

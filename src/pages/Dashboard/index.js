@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-
+import { NavLink } from "react-router-dom";
 import {Container } from "./styles";
 
 import api from '../../services/api';
@@ -25,13 +25,17 @@ class Dashboard extends Component {
   render() {
     return (
       <Container>
-       <div id="search">
-          <input
-            type="text"
-            placeholder="Pesquisar por nome ou categoria"
-          />
-          <button>Buscar</button>
-        </div>
+
+        <nav className="navBar">
+            <ul>
+                <li><NavLink to="/">Dashboard</NavLink></li>
+                <li><NavLink to="/usuario">Usuários</NavLink></li>
+                <li><NavLink to="/anunciante/">Anunciante</NavLink></li>
+                <li><NavLink to="/anuncios/">Anuncios</NavLink></li>
+                <li><NavLink to="/login/">Login</NavLink></li>
+                <li><NavLink to="/logout/">Logout</NavLink></li>
+            </ul>
+        </nav>
 
       <div id="app">
         <main>

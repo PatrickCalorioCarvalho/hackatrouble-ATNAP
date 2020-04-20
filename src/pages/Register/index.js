@@ -35,19 +35,21 @@ class Register extends Component {
   };
   render() {
     return (
-      
+      <div>
+      <nav className="navBar">
+      <ul>
+          <li><NavLink to="/">Dashboard</NavLink></li>
+          <li><NavLink to="/usuario">Usuários</NavLink></li>
+          <li><NavLink to="/anunciante/">Anunciante</NavLink></li>
+          <li><NavLink to="/anuncios/">Anuncios</NavLink></li>
+          <li><NavLink to="/login/">Login</NavLink></li>
+          <li><NavLink to="/logout/">Logout</NavLink></li>
+      </ul>
+      </nav>
+
       <Container>
 
         <Form onSubmit={this.handleAdd}>
-        <div id="menu">
-          <NavLink activeStyle={{ color: 'black' }} to="/usuario">Usuario</NavLink>
-          <div class="linha-vertical"></div>
-          <NavLink to="/Anunciante">Anunciante</NavLink>
-          <div class="linha-vertical"></div>
-          <NavLink to="/propaganda">Propaganda</NavLink>
-          <div class="linha-vertical"></div>
-          <button type="button" onClick={logout}>Logout</button>
-        </div>
 
           {this.state.error && <p>{this.state.error}</p>}
 
@@ -81,6 +83,7 @@ class Register extends Component {
           <button type="submit">Salvar</button>
         </Form>
       </Container>
+      </div>
     );
   }
 }

@@ -27,7 +27,7 @@ class Advertisement extends Component {
       try {
         console.log({ taxId, fullName,phoneNumber,companyName,email });
         await api.post("/Advertisement", { taxId, fullName,phoneNumber,companyName,email });
-        this.props.history.push("/usuario");
+        this.props.history.push("/anuncios");
       } catch (err) {
         console.log(err);
         this.setState({ error: "Ocorreu um erro ao registrar Anunciante." });
@@ -37,17 +37,21 @@ class Advertisement extends Component {
 
   render() {
     return (
+      <div>
+               <nav className="navBar">
+          <ul>
+              <li><NavLink to="/">Dashboard</NavLink></li>
+              <li><NavLink to="/usuario">Usuários</NavLink></li>
+              <li><NavLink to="/anunciante/">Anunciante</NavLink></li>
+              <li><NavLink to="/anuncios/">Anuncios</NavLink></li>
+              <li><NavLink to="/login/">Login</NavLink></li>
+              <li><NavLink to="/logout/">Logout</NavLink></li>
+          </ul>
+      </nav>
+
       <Container>
         <Form onSubmit={this.handleAdd}>
-          <div id="menu">
-            <NavLink  to="/usuario">Usuario</NavLink>
-            <div class="linha-vertical"></div>
-            <NavLink activeStyle={{ color: 'black' }} to="/Anunciante">Anunciante</NavLink>
-            <div class="linha-vertical"></div>
-            <NavLink to="/propaganda">Propaganda</NavLink>
-            <div class="linha-vertical"></div>
-            <button type="button" onClick={logout}>Logout</button>
-          </div>
+
           {this.state.error && <p>{this.state.error}</p>}
           <input
             type="text"
@@ -80,6 +84,7 @@ class Advertisement extends Component {
           <button type="submit">Salvar</button>
         </Form>
       </Container>
+      </div>
     );
   }
 }

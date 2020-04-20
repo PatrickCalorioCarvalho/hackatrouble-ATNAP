@@ -8,7 +8,7 @@ import Advertisement from "./pages/Advertisement";
 
 import Login from "./pages/Login";
 
-import { isAuthenticated } from "./services/auth";
+import { isAuthenticated,logout } from "./services/auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -29,8 +29,9 @@ const Routes = () => (
       <Route exact path="/" component={Dashboard} />
       <PrivateRoute path="/anunciante" component={Advertiser} />
       <PrivateRoute path="/usuario" component={Register} />
-      <PrivateRoute path="/propaganda" component={Advertisement} />
+      <PrivateRoute path="/anuncios" component={Advertisement} />
       <Route path="/login" component={Login} />
+      <Route path="/logout" component={logout()} />
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>
